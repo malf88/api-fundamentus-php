@@ -1,0 +1,17 @@
+version: '3'
+services:
+  app:
+    image: api-fundamentus-php
+    container_name: api-fundamentus-php
+    restart: always
+    build:
+      context: ./
+      dockerfile: docker/Dockerfile
+    environment:
+      - CONTAINER_ROLE=app
+    volumes:
+      - ./:/var/www/
+    ports:
+      - 8500:80
+    expose:
+      - 8500
