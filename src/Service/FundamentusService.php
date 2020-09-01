@@ -41,7 +41,11 @@ class FundamentusService
     }
 
     public function parseFundamentus(){
-        $html = $this->curl->get(self::URL_FUNDAMENTUS);
+        $html = $this->curl->request('GET',self::URL_FUNDAMENTUS,
+            ['headers' => [
+                'User-Agent' => 'Mozilla/5.0 (Windows; U; Windows NT 6.1; rv:2.2) Gecko/20110201',
+                'Accept' => 'text/html, text/plain, text/css, text/sgml, */*;q=0.01',
+            ]]);
 
         $domDocument = new DOMDocument();
         $internalErrors = libxml_use_internal_errors(true);
